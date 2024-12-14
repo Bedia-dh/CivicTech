@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Proposal</title>
+    <link rel="stylesheet" href="Style.css">
+</head>
+<body>
+    <div class="proposal-container">
+        <h2>Propose a New Project to Your Municipality</h2>
+
+        <!-- Region Selector -->
+        <div class="input-group">
+            <label for="region">Select Your Region:</label>
+            <select id="region">
+                <option value="region1">Region 1</option>
+                <option value="region2">Region 2</option>
+                <option value="region3">Region 3</option>
+                <!-- Add more regions as needed -->
+            </select>
+        </div>
+
+        <!-- Project Description -->
+        <div class="input-group">
+            <label for="description">Brief Description of Your Project:</label>
+            <textarea id="description" placeholder="Describe your project idea here..."></textarea>
+        </div>
+
+        <!-- Submit Button -->
+        <button id="submit">Submit Proposal</button>
+    </div>
+
+    <!-- Recent Projects Slider -->
+    <div class="projects-slider">
+        <h3>Recent Projects Launched</h3>
+        <div class="slider">
+            <div class="project-item">Project 1</div>
+            <div class="project-item">Project 2</div>
+            <div class="project-item">Project 3</div>
+            <div class="project-item">Project 4</div>
+            <!-- Add more projects dynamically as needed -->
+        </div>
+    </div>
+
+    <script src="App.js"></script>
+</body>
+</html>
