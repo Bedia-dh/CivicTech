@@ -1,47 +1,80 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project Proposal</title>
+    <title>Formulaire de Proposition</title>
     <link rel="stylesheet" href="Style.css">
 </head>
 <body>
-    <div class="proposal-container">
-        <h2>Propose a New Project to Your Municipality</h2>
-
-        <!-- Region Selector -->
-        <div class="input-group">
-            <label for="region">Select Your Region:</label>
-            <select id="region">
-                <option value="region1">Region 1</option>
-                <option value="region2">Region 2</option>
-                <option value="region3">Region 3</option>
-                <!-- Add more regions as needed -->
-            </select>
-        </div>
-
-        <!-- Project Description -->
-        <div class="input-group">
-            <label for="description">Brief Description of Your Project:</label>
-            <textarea id="description" placeholder="Describe your project idea here..."></textarea>
-        </div>
-
-        <!-- Submit Button -->
-        <button id="submit">Submit Proposal</button>
-    </div>
-
-    <!-- Recent Projects Slider -->
-    <div class="projects-slider">
-        <h3>Recent Projects Launched</h3>
-        <div class="slider">
-            <div class="project-item">Project 1</div>
-            <div class="project-item">Project 2</div>
-            <div class="project-item">Project 3</div>
-            <div class="project-item">Project 4</div>
-            <!-- Add more projects dynamically as needed -->
+    <div class="header">
+        <div class="logo">
+            <img src="interieur.png">
+            <img src="tun.jpg">
         </div>
     </div>
+    <!-- Section pour la label cliquable -->
+    <section id="proposal-section">
+        <div class="container">
+            <h2>فضاء المواطن - تقديم اقتراح</h2>
+            <p>يمكنك تقديم مشروع جديد للبلدية من خلال تعبئة الاستمارة التالية:</p>
+            <button id="open-form" class="button">أضف مشروعك</button>
+        </div>
+
+        <!-- Interface du formulaire -->
+        <div id="form-container" class="hidden">
+            <h3>نموذج تقديم مشروع</h3>
+            <form id="proposal-form">
+                <label for="name">الاسم :</label>
+                <input type="text" id="name" placeholder="أدخل اسمك">
+
+                <label for="family_name">اللقب :</label>
+                <input type="text" id="family_name" placeholder="أدخل لقبك">
+
+                <div class="input-group">
+                    <label for="region">المنطقة:</label>
+                    <br><br>
+                    <select id="region">
+                        <option value="ariana">أريانة</option>
+                        <option value="beja">باجة</option>
+                        <option value="ben-arous">بن عروس</option>
+                        <option value="bizerte">بنزرت</option>
+                        <option value="gabes">قابس</option>
+                        <option value="gafsa">قفصة</option>
+                        <option value="jendouba">جندوبة</option>
+                        <option value="kairouan">القيروان</option>
+                        <option value="kasserine">القصرين</option>
+                        <option value="kebili">قبلي</option>
+                        <option value="kef">الكاف</option>
+                        <option value="mahdia">المهدية</option>
+                        <option value="manouba">منوبة</option>
+                        <option value="medenine">مدنين</option>
+                        <option value="monastir">المنستير</option>
+                        <option value="nabeul">نابل</option>
+                        <option value="sfax">صفاقس</option>
+                        <option value="sidi-bouzid">سيدي بوزيد</option>
+                        <option value="siliana">سليانة</option>
+                        <option value="sousse">سوسة</option>
+                        <option value="tataouine">تطاوين</option>
+                        <option value="tozeur">توزر</option>
+                        <option value="tunis">تونس</option>
+                        <option value="zaghouan">زغوان</option>
+                    </select>
+                </div>                    
+
+                <label for="postal_code">الرمز البريدي :</label>
+                <input type="text" id="postal_code" placeholder="...">
+
+                <label for="municipalities">البلدية :</label>
+                <select id="municipalities"></select>
+
+                <label for="description">وصف المشروع :</label>
+                <textarea id="description" rows="5" placeholder="أدخل وصف مشروعك"></textarea>
+
+                <button type="submit" class="button">إرسال الاقتراح</button>
+            </form>
+        </div>
+    </section>
 
     <script src="App.js"></script>
 </body>

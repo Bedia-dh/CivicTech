@@ -1,27 +1,79 @@
-document.getElementById("submit").addEventListener("click", function() {
-    const region = document.getElementById("region").value;
-    const description = document.getElementById("description").value;
+ const regions = {
+    "ariana": ["أريانة", "سكرة", "رواد", "قلعة الأندلس"],
+    "beja": ["المعقولة", "زهرة مدين", "نفزة", "تبرسق", "تستور", "قبلاط", "مجاز الباب"],
+    "ben-arous": ["بن عروس", "المروج", "حمام الأنف", "حمام الشط", "بومهل البساتين", "الزهراء", "رادس", "مقرين", "المحمدية-فوشانة", "مرناق", "خليدية"],
+    "bizerte": ["سجنان", "ماطر", "منزل بورقيبة", "تينجة", "غار الملح", "عوسجة", "منزل جميل", "منزل عبد الرحمان", "العالية", "رأس الجبل", "الماتلين", "رفراف"],
+    "gabes": ["شنني نحال", "غنوش", "مطوية", "وذرف", "الحامة", "مطماطة", "مطماطة الجديدة", "مارث", "زارات"],
+    "gafsa": ["القصر", "المظيلة", "الرديف", "المتلوي", "أم العرائس", "القطار", "سيدي عيش"],
+    "jendouba": ["بوسالم", "طبرقة", "عين دراهم", "فرنانة", "بني مطير", "غار الدماء", "وادي مليز"],
+    "kairouan": ["الشبيكة", "السبيخة", "الوسلاتية", "عين جلولة", "حفوز", "العلا", "حاجب العيون", "نصر الله", "منزل مهيري", "الشراردة", "بوعجيلة"],
+    "kasserine": ["سبيطلة", "السبّيبة", "جدليان", "تالة", "حيدرة", "فوسانة", "فريانة", "تالة", "ماجل بلعباس"],
+    "kebili": ["دوز", "سوق الأحد", "القلعة", "جمنا"],
+    "kef": ["نبّر", "تاجروين", "القصور", "ساقية سيدي يوسف", "الكريب", "الدهماني", "السيرس", "القلعة الخصبة", "الجريصة", "الكسور", "قلعة سنان"],
+    "mahdia": ["الرجيش", "بومرداس", "أولاد الشامخ", "شربان", "هبيرة", "السواسي", "الجم", "كرّكر", "الشابة", "ملولش", "سيدي علوان", "قصور الساف", "البرادعة"],
+    "manouba": ["دوار هيشر", "وادي الليل", "البطان", "الجديدة", "طبربة", "برج العامري", "المرناقية", "دندان"],
+    "medenine": ["بني خداش", "بن قردان", "جرجيس", "حومة السوق (جربة)", "ميدون (جربة)", "اجيم (جربة)"],
+    "monastir": ["خنيس", "وردانين", "الساحلين معتمر", "سيدي عامر", "زرمدين", "بني حسان", "غنادة", "جمال", "منزل كامل", "زاوية قنطش", "بنبلة-المنارة", "منزل النور", "المصدور", "المكنين", "سيدي بنور", "منزل فارسي", "عميرة الفحول", "عميرة التوازرة", "عميرة الحجاج", "الشراحيل", "البقالطة", "طبلبة", "قصر هلال", "قصر الساف", "بنّان بوضر", "توزة", "صيادة", "لمطة", "بوحجر", "منزل حياة"],
+    "nabeul": ["دار شعبان الفهري", "بني خيار", "المعمورة", "سماش", "قربة", "تازركة", "منزل تميم", "منزل حر", "الميدة", "قليبية", "عزمو", "حمام الأغزاز", "دار علوش", "الهوارية", "تاكلسة", "سليمان", "قربص", "منزل بوزلفة", "بني خلاد", "زاوية الجديدي", "قرمبالية", "بوعرقوب", "الحمامات"],
+    "sfax": ["ساقية الزيت", "شيحية", "ساقية الدائر", "قرمدة", "العين", "طينة", "عقارب", "جبنيانة", "الحنشة", "منزل شاكر", "غريبة", "بئر علي بن خليفة", "الصخيرة", "المحرس", "قرقنة"],
+    "sidi-bouzid": ["جلمة", "السبالة", "بير الحفي", "سيدي علي بن عون", "منزل بوزيان", "المكناسي", "المزونة", "الرقاب", "أولاد حفوز"],
+    "siliana": ["بوعرادة", "كسرى", "سيدي بورويس", "الروحية", "الكريب", "العروسة", "مكثر", "قعفور"],
+    "sousse": ["كثيب الثريات", "الزهور", "زاوية سوسة", "حمام سوسة", "أكودة", "القلعة الكبرى", "سيدي بوعلي", "هرقلة", "النفيضة", "بوفيشة", "سيدي الهاني", "مساكن", "القلعة الصغرى", "المسعدين", "قندار"],
+    "tataouine": ["بئر الأحمر", "غمراسن", "الذهيبة", "رمادة"],
+    "tozeur": ["دقاش", "حامة الجريد", "نفطة", "تمغزة"],
+    "tunis": ["تونس", "باردو", "الكرم", "حلق الوادي", "قرطاج", "سيدي بوسعيد", "المرسى", "سيدي حسين"],
+    "zaghouan": ["زريبة", "بئر مشارقة", "جبل الوسط", "الفحص", "الناظور"]
+};
 
-    if (description.trim() === "") {
-        alert("Please provide a brief description of your project.");
-        return;
-    }
+const postalCodes = {
+    "ariana": "2080",
+    "beja": "9000",
+    "ben-arous": "2013",
+    "bizerte": "7000",
+    "gabes": "6000",
+    "gafsa": "2100",
+    "jendouba": "8100",
+    "kairouan": "3100",
+    "kasserine": "1200",
+    "kebili": "4200",
+    "kef": "7100",
+    "mahdia": "5100",
+    "manouba": "2010",
+    "medenine": "4100",
+    "monastir": "5000",
+    "nabeul": "8000",
+    "sfax": "3000",
+    "sidi-bouzid": "9100",
+    "siliana": "6100",
+    "sousse": "4000",
+    "tataouine": "3200",
+    "tozeur": "2200",
+    "tunis": "1000",
+    "zaghouan": "1100"
+};
 
-    alert(`Your project proposal has been submitted!\nRegion: ${region}\nDescription: ${description}`);
+document.getElementById("open-form").addEventListener("click", () => {
+    document.getElementById("form-container").classList.toggle("hidden");
 });
 
-// Optional: Add functionality to load recent projects dynamically
-const projects = [
-    "Community Park Improvement",
-    "Public Library Renovation",
-    "Waste Management System Upgrade",
-    "New Pedestrian Walkways"
-];
+// Mettre à jour les municipalités et codes postaux
+document.getElementById("region").addEventListener("change", (e) => {
+    const selectedRegion = e.target.value;
+    const municipalities = regions[selectedRegion];
+    const municipalitiesDropdown = document.getElementById("municipalities");
+    const postalCodeField = document.getElementById("postal_code");
 
-const slider = document.querySelector(".slider");
-projects.forEach(project => {
-    const projectItem = document.createElement("div");
-    projectItem.classList.add("project-item");
-    projectItem.textContent = project;
-    slider.appendChild(projectItem);
+    // Mettre à jour le champ postal code
+    postalCodeField.value = postalCodes[selectedRegion] || "";
+
+    // Remplir la liste des municipalités
+    municipalitiesDropdown.innerHTML = "";
+    if (municipalities) {
+        municipalities.forEach(municipality => {
+            const option = document.createElement("option");
+            option.value = municipality;
+            option.textContent = municipality;
+            municipalitiesDropdown.appendChild(option);
+        });
+    }
 });
